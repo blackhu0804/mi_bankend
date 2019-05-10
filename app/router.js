@@ -9,19 +9,32 @@ module.exports = app => {
    * @apiVersion 0.1.0
    * @api {POST} /user 创建用户
    * @apiGroup site
-   *
+   * 
    * @apiParam {String} username 用户名
    * @apiParam {String} password 密码
-   *
+   * 
    * @apiSuccess {Integer} code 响应码
    * @apiSuccess {Object} data 数据
-   * @apiSuccess {Object} data.user 用户对象
-   * @apiSuccess {String} data.user.id 用户id，UUIDv4版本
-   *
+   * @apiSuccess {OBject} data.user 用户对象
+   * @apiSuccess {String} data.user.id 用户id, uuidv4版本
+   * 
    * @apiSuccessExample Success-Response:
-   *{"code":0,"data":{"user":{"id":"512914f0-84ad-40e2-a7af-3604d828d491","username":"11117",
-   * "updated_at":"2019-01-30T12:56:58.273Z","created_at":"2019-01-30T12:56:58.273Z","phoneNumber":null}}}
-   *
+   * {
+    "code": 0,
+    "result": "ok",
+    "description": "success",
+    "data": {
+        "send_order": 1,
+        "unpaid_order": 2,
+        "user": {
+            "email": "",
+            "icon": "//www.baidu.com/s?wd=%E4%BB%8A%E6%97%A5%E6%96%B0%E9%B2%9C%E4%BA%8B&tn=SE_PclogoS_8whnvm25&sa=ire_dl_gh_logo&rsv_dl=igh_logo_pcs",
+            "mobile": "131****4068",
+            "userName": "tony",
+            "user_id": 1313124239
+        }
+    }
+}
    */
   router.post('/user', controller.site.createUser);
   router.get('/user', controller.site.getUser);
@@ -31,8 +44,6 @@ module.exports = app => {
   // router.post('/sendVerifyCode', controller.site.sendVerifyCode);
 
   router.post('/api/v1/admin/product', controller.adminProduct.createNewProduct);
-
-  console.log(controller);
 
   router.get('/api/v1/admin/product', controller.adminProduct.listProducts);
 

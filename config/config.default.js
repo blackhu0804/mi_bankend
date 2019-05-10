@@ -1,41 +1,41 @@
-'use strict';
+"use strict";
 
 module.exports = appInfo => {
-  const config = exports = {};
+  const config = (exports = {});
 
   // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1535158045837_8817';
+  config.keys = appInfo.name + "_1535158045837_8817";
 
   // add your config here
   config.middleware = [];
 
   config.security = {
     csrf: {
-      enable: false,
+      enable: false
     },
-    domainWhiteList: [ 'http://localhost:8080' ],
+    domainWhiteList: ["http://localhost:8080"]
   };
 
   config.sequelize = {
-    dialect: 'postgres',
-    host: 'localhost',
-    database: 'mi_local_test',
+    dialect: "postgres",
+    host: "localhost",
+    database: "mi_local",
     port: 5432,
-    username: 'lurenlaoyang',
-    password: '',
+    username: "black",
+    password: "",
     pool: {
       max: 10,
-      min: 1,
-    },
+      min: 1
+    }
   };
 
   config.redis = {
     client: {
-      host: 'localhost',
+      host: "localhost",
       port: 6379,
       db: 0,
-      password: '',
-    },
+      password: ""
+    }
   };
 
   config.onerror = {
@@ -44,9 +44,9 @@ module.exports = appInfo => {
       if (httpStatusCode) ctx.statusCode = httpStatusCode;
       ctx.body = {
         code,
-        msg: httpMsg,
+        msg: httpMsg
       };
-    },
+    }
   };
 
   return config;
