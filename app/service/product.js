@@ -12,6 +12,11 @@ class Product extends Service {
     const products = await this.app.model.Product.listProducts(query);
     return products;
   }
+
+  async updateProduct(query) {
+    const updatedRows = await this.app.model.Product.updateProduct(query);
+    return updatedRows;
+  }
 }
 
 module.exports = Product;

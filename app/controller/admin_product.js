@@ -26,6 +26,27 @@ class SiteController extends Controller {
     };
   }
 
+  async getProduct() {
+    const { id } = this.ctx.params;
+    console.log(id)
+    const products = await this.ctx.service.product.listProducts({ids: [id]});
+    this.ctx.body = {
+      code: 0,
+      data: {
+        product: products[0],
+      },
+    };
+  }
+
+  async updateProduct() {
+    const { id } = this.ctx.params;
+    const {product} = this.ctx.request.body;
+    product.id = id
+    await this.ctx.service.product.updateProduct(product);
+    this.ctx.body = {
+      code: 0
+    };
+  }
 }
 
 module.exports = SiteController;

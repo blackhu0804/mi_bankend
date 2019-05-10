@@ -44,8 +44,9 @@ module.exports = app => {
   // router.post('/sendVerifyCode', controller.site.sendVerifyCode);
 
   router.post('/api/v1/admin/product', controller.adminProduct.createNewProduct);
-
+  router.get('/api/v1/admin/product/:id', controller.adminProduct.getProduct);
   router.get('/api/v1/admin/product', controller.adminProduct.listProducts);
+  router.patch('/api/v1/admin/product/:id', controller.adminProduct.updateProduct);
 
   // B端API 通用前缀： /api/v1/admin/
   // 商品
