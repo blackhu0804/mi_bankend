@@ -17,6 +17,18 @@ class Product extends Service {
     const updatedRows = await this.app.model.Product.updateProduct(query);
     return updatedRows;
   }
+
+  async getProductDetail(id) {
+    const [product] = await this.listProducts({ids: [id]});
+    const ps = [this.ctx.service.goods.listGoods({ product_id: id })];
+
+    const [goodsList] = await Promise.all(ps);
+    
+    return {
+      product,
+      goodsList,
+    };
+  }
 }
 
 module.exports = Product;

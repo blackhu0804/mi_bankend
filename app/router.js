@@ -48,6 +48,12 @@ module.exports = app => {
   router.get('/api/v1/admin/product', controller.adminProduct.listProducts);
   router.patch('/api/v1/admin/product/:id', controller.adminProduct.updateProduct);
 
+  router.get('/api/v1/site/product/:id', controller.product.getProduct);
+
+  router.post('/api/v1/admin/goods', controller.adminGoods.createNewGood);
+  router.get('/api/v1/admin/goods/:id', controller.adminGoods.getGood);
+  router.get('/api/v1/admin/goods', controller.adminGoods.listGoods);
+  router.patch('/api/v1/admin/goods/:id', controller.adminGoods.updateGood);
   // B端API 通用前缀： /api/v1/admin/
   // 商品
   /**
