@@ -29,6 +29,8 @@ class GoodsControllerController extends Controller {
   async getGood() {
     const { id } = this.ctx.params;
     const goods = await this.ctx.service.goods.listGoods({ ids: [id] });
+    const lockedInventory = await this.ctx.service.inventory.getLocksByGoodsId(id);
+    goods.inventory -= lockedInventory;
     this.ctx.body = {
       code: 0,
       data: {
@@ -43,7 +45,7 @@ class GoodsControllerController extends Controller {
     goods.id = id;
     await this.ctx.service.goods.updateGoods(goods);
     this.ctx.body = {
-      code: 0,
+      code: 0
     };
   }
 

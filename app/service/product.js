@@ -24,6 +24,8 @@ class Product extends Service {
 
     const [goodsList] = await Promise.all(ps);
     
+    await this.ctx.service.inventory.fillGoodsRealInventory(goodsList);
+
     return {
       product,
       goodsList,

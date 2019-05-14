@@ -20,6 +20,7 @@ class Goods extends Service {
 
   async getGoodsDetail(id) {
     const [goods] = await this.listGoods({ ids: [id] });
+    // const lockedInventory = await this.app.
     return {
       goods,
     };
